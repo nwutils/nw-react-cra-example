@@ -26,6 +26,7 @@ npm i --save-exact nw@0.65.1-sdk
 ```json
 "main": "main.js",
 "homepage": ".",
+"chromium-args": "--enable-logging=stderr",
 "node-remote": [
   "http://localhost:3042",
   "file://*"
