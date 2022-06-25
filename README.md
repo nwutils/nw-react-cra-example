@@ -16,7 +16,7 @@ The following is expected to already be installed/configured before starting thi
 ```sh
 npx create-react-app nw-react
 cd nw-react
-npm i concurrently wait-on
+npm i concurrently wait-on react-devtools
 npm i --save-exact nw@0.65.1-sdk
 ```
 
