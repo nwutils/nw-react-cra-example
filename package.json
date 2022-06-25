@@ -2,10 +2,12 @@
   "name": "nw-react",
   "version": "0.1.0",
   "main": "main.js",
+  "homepage": ".",
   "node-remote": [
     "http://localhost:3042",
     "file://*"
   ],
+  "chromium-args": "--enable-logging=stderr",
   "private": true,
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
