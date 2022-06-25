@@ -25,6 +25,7 @@ npm i --save-exact nw@0.65.1-sdk
 - Add the following:
 ```json
 "main": "main.js",
+"homepage": ".",
 "node-remote": [
   "http://localhost:3042",
   "file://*"
