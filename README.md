@@ -71,3 +71,6 @@ nw.Window.open(interfaceUri)
 // Bring nw to React namespace
 const nw = global.nw;
 ```
+
+## Development
+At this point, you can run `npm run dev` (Windows) or `npm run dev:linux` (Linux). The React development "live" server will be started and NW.js will be launched, connecting to that "live" server. Any updates to your React application will automatically be reflected in the NW.js window.
