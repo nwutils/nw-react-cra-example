@@ -47,6 +47,7 @@ The following steps will result in a development environment, where your React a
             "dev:linuxtools": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
         }
         ```
+        Note: Both `eslintConfig` and `scripts` should already exist. The above items should be added to the existing sections.
 
 3. Add the following to `nw-react\.env` (new file):
     ```
