@@ -62,9 +62,11 @@ The following steps will result in a development environment, where your React a
 
     const interfaceUri = process.env.NWJS_START_URL
       ? process.env.NWJS_START_URL.trim()
-      : `${baseUri}/build`;
+      : `${baseUri}/build/`;
 
-    nw.Window.open(interfaceUri);
+    const startUri = `${interfaceUri}/index.html`;
+
+    nw.Window.open(startUri);
     ```
 
 5. Add the following at the top of the `<head>` block in `nw-react\public\index.html`:
