@@ -42,9 +42,9 @@ The following steps will result in a development environment, where your React a
         },
         "scripts": {
             "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-            "dev:tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
+            "dev:tools": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
             "dev:linux": "concurrently \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-            "dev:linuxtools": "concurrently \"react-devtools\" \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
+            "dev:linuxtools": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
         }
         ```
 
@@ -52,6 +52,7 @@ The following steps will result in a development environment, where your React a
     ```
     PORT=3042
     BROWSER=none
+    REACT_APP_DEVTOOLS=enabled
     ```
 
 4. Add the following to `nw-react\main.js` (new file):
