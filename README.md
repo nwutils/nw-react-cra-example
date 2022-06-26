@@ -11,70 +11,72 @@ The following is expected to already be installed/configured before starting thi
 - <a target="_blank" href="https://code.visualstudio.com/">Visual Studio Code</a> - A decent JavaScript editor/IDE should be installed. Some steps in this guide may assume Visual Studio Code is being used but other options are available.
 
 ## Getting Started
-The following steps will result in a development environment, where your React application will be running in NW.js and automatically reload for any changes.
+The following steps will result in a development environment, where your React application will be running in NW.js and automatically reload for any changes. Note that all instances of `nw-react` should be replaced with the name of your application.
 
 1. Open a terminal, navigate to a directory where you have write permission, then run the following commands:
 
-```sh
-npx create-react-app nw-react
-cd nw-react
-npm i concurrently wait-on react-devtools
-npm i --save-exact nw@0.65.1-sdk
-```
+    ```sh
+    npx create-react-app nw-react
+    cd nw-react
+    npm i concurrently wait-on react-devtools
+    npm i --save-exact nw@0.65.1-sdk
+    ```
+
+    Note: The latest available version of NW.js should be installed above.
 
 2. Open the file `nw-react/package.json` and make the following changes:
-- Rename `dependencies` to `devDependencies`.
-- Add the following:
-```json
-"main": "main.js",
-"homepage": ".",
-"chromium-args": "--enable-logging=stderr",
-"node-remote": [
-  "http://localhost:3042",
-  "file://*"
-],
-"eslintConfig": {
-    "globals": {
-      "nw": true
-    }
-},
-"scripts": {
-    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-    "dev:tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-    "dev:linux": "concurrently \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-    "dev:linuxtools": "concurrently \"react-devtools\" \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
-}
-```
+    - Rename `dependencies` to `devDependencies`.
+    - Add the following:
+        ```json
+        "main": "main.js",
+        "homepage": ".",
+        "chromium-args": "--enable-logging=stderr",
+        "node-remote": [
+          "http://localhost:3042",
+          "file://*"
+        ],
+        "eslintConfig": {
+            "globals": {
+              "nw": true
+            }
+        },
+        "scripts": {
+            "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
+            "dev:tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
+            "dev:linux": "concurrently \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
+            "dev:linuxtools": "concurrently \"react-devtools\" \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
+        }
+        ```
 
 3. Add the following to `nw-react\.env` (new file):
-```
-PORT=3042
-BROWSER=none
-```
+    ```
+    PORT=3042
+    BROWSER=none
+    ```
 
 4. Add the following to `nw-react\main.js` (new file):
-```js
-const url = require('node:url');
+    ```js
+    const url = require('node:url');
 
-const baseUri = url.pathToFileURL(__dirname).toString();
+    const baseUri = url.pathToFileURL(__dirname).toString();
 
-const interfaceUri = process.env.NWJS_START_URL
-  ? process.env.NWJS_START_URL.trim()
-  : `${baseUri}/build`;
+    const interfaceUri = process.env.NWJS_START_URL
+      ? process.env.NWJS_START_URL.trim()
+      : `${baseUri}/build`;
 
-nw.Window.open(interfaceUri);
-```
+    nw.Window.open(interfaceUri);
+    ```
 
 5. Add the following at the top of the `<head>` block in `nw-react\public\index.html`:
-```html
-<script>if ('%REACT_APP_DEVTOOLS%'.trim() === 'enabled') document.write('<script src="http:\/\/localhost:8097"><\/script>')</script>
-```
+    ```html
+    <script>if ('%REACT_APP_DEVTOOLS%'.trim() === 'enabled') document.write('<script src="http:\/\/localhost:8097"><\/script>')</script>
+    ```
 
 6. Add the following after the `import` statements at the top of `nw-react\src\index.js`:
-```js
-// Bring nw to React namespace
-const nw = global.nw;
-```
+    ```js
+    // Bring nw to React namespace
+    const nw = global.nw;
+    ```
 
 ## Development Notes
 - At this point, you can run `npm run dev` (Windows) or `npm run dev:linux` (Linux). The React development "live" server will be started and NW.js will be launched, connecting to that "live" server. Any updates to your React application will automatically be reflected in the NW.js window.
