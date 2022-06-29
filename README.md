@@ -101,6 +101,11 @@ The following steps can be followed to manually create a "production" build of y
 4. Create a directory named `package.nw` inside the directory created in step #2 above.
 5. Copy the following files to this new `package.nw` directory: `main.js`, `package.json`, `build/` (the entire directory).
 6. Edit `package.json` and remove the entire `devDependencies` section.
-7. If the Node.js context of your application uses any NPM packages (anything in `dependencies`), these need to be installed in the `package.nw` directory. To do this, run `npm install` inside `package.nw`.
+7. If the Node.js context of your application uses any NPM packages (anything in `dependencies`), these need to be installed in the `package.nw` directory. To do this, run `npm ci --production` inside `package.nw`.
 
 The main directory from step #2 will now include your fully-functional application. It can be copied anywhere and used without needing anything else pre-installed. Ideally, this directory would now be turned into an "installer" for easy distribution. This can be done with tools like <a href="https://jrsoftware.org/isinfo.php">InnoSetup</a> for Windows or building a DEB/RPM for Linux.
+
+## Build Tools
+Often, it's fairly-trivial at this point to write a custom "build system" that automatically runs through the above steps (as well as any additional customization steps needed), and generates installers for all supported operating systems. There are some existing packages for this task, but most have not been maintained:
+- <a href="https://www.npmjs.com/package/nw-builder">nw-builder</a> - Maintenance of this package has recently been picked up and a "stable" v4 build is expected soon. Until then it's a great reference.
+- <a href="https://www.npmjs.com/package/nwjs-builder-phoenix">nwjs-builder-phoenix</a> - This was an excellent set of build scripts, but it has not been maintained. It's still a good reference, if building a custom build system.
