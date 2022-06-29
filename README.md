@@ -100,6 +100,7 @@ The following steps can be followed to manually create a "production" build of y
 3. Rename the file NW.js executable to match your application name (Windows: `nw.exe` to `nw-react.exe` | Linux: `nw` to `nw-react`).
 4. Create a directory named `package.nw` inside the directory created in step #2 above.
 5. Copy the following files to this new `package.nw` directory: `main.js`, `package.json`, `build/` (the entire directory).
-6. If the Node.js context of your application uses any NPM packages, these need to be installed in the `package.nw` directory (e.g. `npm install --production --global --prefix "<path_to_package.nw_directory>"`).
+6. Edit `package.json` and remove the entire `devDependencies` section.
+7. If the Node.js context of your application uses any NPM packages (anything in `dependencies`), these need to be installed in the `package.nw` directory. To do this, run `npm install` inside `package.nw`.
 
 The main directory from step #2 will now include your fully-functional application. It can be copied anywhere and used without needing anything else pre-installed. Ideally, this directory would now be turned into an "installer" for easy distribution. This can be done with tools like <a href="https://jrsoftware.org/isinfo.php">InnoSetup</a> for Windows or building a DEB/RPM for Linux.
