@@ -30,7 +30,6 @@ The following steps will result in a development environment, where your React a
         ```json
         "main": "main.js",
         "homepage": ".",
-        "chromium-args": "--enable-logging=stderr",
         "node-remote": [
           "http://localhost:3042",
           "file://*"
@@ -42,12 +41,14 @@ The following steps will result in a development environment, where your React a
         },
         "scripts": {
             "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-            "dev:tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
+            "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
             "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-            "dev:linuxtools": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
+            "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
         }
         ```
-        Note: Both `eslintConfig` and `scripts` should already exist. The above items should be added to the existing sections.
+        Note #1: Both `eslintConfig` and `scripts` should already exist. The above items should be added to the existing sections.
+
+        Note #2: Versions 8.13.0 and 8.13.1 of NPM have a bug when using colons in the script name. Until this is resolved, use NPM 8.12.2.
 
 3. Add the following to `nw-react\.env` (new file):
     ```
