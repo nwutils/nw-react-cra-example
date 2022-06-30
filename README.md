@@ -76,12 +76,6 @@ The following steps will result in a development environment, where your React a
     <script>if ('%REACT_APP_DEVTOOLS%'.trim() === 'enabled') document.write('<script src="http:\/\/localhost:8097"><\/script>')</script>
     ```
 
-6. Add the following after the `import` statements at the top of `nw-react\src\index.js`:
-    ```js
-    // Bring nw to React namespace
-    const nw = global.nw;
-    ```
-
 ## Development Notes
 - At this point, you can run `npm run dev` (Windows) or `npm run dev:linux` (Linux). The React development "live" server will be started and NW.js will be launched, connecting to that "live" server. Any updates to your React application will automatically be reflected in the NW.js window.
 
