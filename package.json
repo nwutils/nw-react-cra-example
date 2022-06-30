@@ -7,14 +7,13 @@
     "http://localhost:3042",
     "file://*"
   ],
-  "chromium-args": "--enable-logging=stderr",
   "private": true,
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "concurrently": "^7.2.2",
-    "nw": "0.65.1-sdk",
+    "nw": "0.66.0-sdk",
     "react": "^18.2.0",
     "react-devtools": "^4.24.7",
     "react-dom": "^18.2.0",
@@ -24,22 +23,22 @@
   },
   "scripts": {
     "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-    "dev:tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-    "dev:linux": "concurrently \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-    "dev:linuxtools": "concurrently \"react-devtools\" \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
+    "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
+    "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
+    "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
+    "globals": {
+      "nw": true
+    },
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "globals": {
-      "nw": true
-    }
+    ]
   },
   "browserslist": {
     "production": [
