@@ -24,7 +24,9 @@ The following steps will result in a development environment, where your React a
     npm i --save-exact nw@0.66.0-sdk
     ```
 
-    Note: The latest available version of NW.js should be installed above.
+    __Note #1__: The latest available version of NW.js should be installed above.
+    
+    __Note #2__: The above NPM commands would normally be `--save-dev` to make them `devDependencies`. However, `create-react-app` incorrectly marks all of its dependencies as `dependencies`. So, we'll be renaming the entire section in step #2 below.
 
 2. Open the file `nw-react/package.json` and make the following changes:
     - Rename `dependencies` to `devDependencies`.
@@ -48,9 +50,9 @@ The following steps will result in a development environment, where your React a
             "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
         }
         ```
-        Note #1: Both `eslintConfig` and `scripts` should already exist. The above items should be added to the existing sections.
+        __Note #1__: Both `eslintConfig` and `scripts` should already exist. The above items should be added to the existing sections.
 
-        Note #2: Versions 8.13.0 and 8.13.1 of NPM have a bug when using colons in the script name. Until this is resolved, use NPM 8.12.2.
+        __Note #2__: Versions 8.13.0 and 8.13.1 of NPM have a bug when using colons in the script name. Until this is resolved, use NPM 8.12.2.
 
 3. Add the following to `nw-react\.env` (new file):
     ```
