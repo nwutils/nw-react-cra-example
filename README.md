@@ -21,7 +21,7 @@ The following steps will result in a development environment, where your React a
     npx create-react-app nw-react
     cd nw-react
     npm i concurrently wait-on react-devtools
-    npm i --save-exact nw@0.66.0-sdk
+    npm i --save-exact nw@0.69.1-sdk
     ```
 
     __Note #1__: The latest available version of NW.js should be installed above.
@@ -44,15 +44,13 @@ The following steps will result in a development environment, where your React a
             }
         },
         "scripts": {
-            "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-            "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-            "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-            "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
+            "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
+            "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
+            "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
+            "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr .\"",
         }
         ```
         __Note #1__: Both `eslintConfig` and `scripts` should already exist. The above items should be added to the existing sections.
-
-        __Note #2__: Versions 8.13.0 and 8.13.1 of NPM have a bug when using colons in the script name. Until this is resolved, use NPM 8.12.2.
 
 3. Add the following to `nw-react\.env` (new file):
     ```
