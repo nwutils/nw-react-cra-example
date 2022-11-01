@@ -22,10 +22,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "dev": "concurrently \"npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-    "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://localhost:3042 && set NWJS_START_URL=http://localhost:3042 && nw --enable-logging=stderr .\"",
-    "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-    "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://localhost:3042 && export NWJS_START_URL=http://localhost:3042; nw --enable-logging=stderr .\"",
+    "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
+    "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
+    "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
+    "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr .\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
