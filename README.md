@@ -21,7 +21,7 @@ The following steps will result in a development environment, where your React a
     npx create-react-app nw-react
     cd nw-react
     npm i concurrently wait-on react-devtools
-    npm i --save-exact nw@0.69.1-sdk
+    npm i --save-exact nw@0.70.0-sdk
     ```
 
     __Note #1__: The latest available version of NW.js should be installed above.
