@@ -21,7 +21,7 @@ The following steps will result in a development environment, where your React a
     npx create-react-app nw-react
     cd nw-react
     npm i concurrently wait-on react-devtools
-    npm i --save-exact nw@0.70.0-sdk
+    npm i --save-exact nw@0.70.1-sdk
     ```
 
     __Note #1__: The latest available version of NW.js should be installed above.
@@ -93,7 +93,7 @@ The following steps will result in a development environment, where your React a
 The following steps can be followed to manually create a "production" build of your application. This will use the "built" version of your React application and the "normal" (non-SDK) build of NW.js (disabling DevTools).
 
 1. Run the command `npm run build` inside your application development directory (`nw-react` from the example above). This will generate a `build` directory, which is the production version of your React application.
-2. Download the "Normal" (non-SDK) build of NW.js, which matches the version being used for development (0.65.1 in the example above). Extract this into a **new** directory (e.g. `nw-react/dist/`).
+2. Download the "Normal" (non-SDK) build of NW.js, which matches the version being used for development (0.70.1 in the example above). Extract this into a **new** directory (e.g. `nw-react/dist/`).
 3. Rename the NW.js executable file to match your application name (Windows: `nw.exe` to `nw-react.exe` | Linux: `nw` to `nw-react`).
 4. Create a directory named `package.nw` inside the directory created in step #2 above (e.g. `nw-react/dist/package.nw/`).
 5. Copy the following files to this new `package.nw` directory: `nw-react/main.js`, `nw-react/package.json`, `nw-react/build/` (the entire directory).
