@@ -92,15 +92,15 @@ The following steps will result in a development environment, where your React a
 ## Production Build
 The following steps can be followed to manually create a "production" build of your application. This will use the "built" version of your React application and the "normal" (non-SDK) build of NW.js (disabling DevTools).
 
-1. Run the command `npm run build` inside your application development directory (`nw-react` from the example above). This will generate a `build` directory, which is the production version of your React application.
-2. Download the "Normal" (non-SDK) build of NW.js, which matches the version being used for development (0.70.1 in the example above). Extract this into a **new** directory (e.g. `nw-react/dist/`).
-3. Rename the NW.js executable file to match your application name (Windows: `nw.exe` to `nw-react.exe` | Linux: `nw` to `nw-react`).
+1. Run the command `npm run build` inside the application development directory (`nw-react` from the example above). This will generate a `nw-react/build/` directory, which is the production version of the React application.
+2. Download the "Normal" (non-SDK) build of NW.js (https://nwjs.io/downloads/), which matches the version being used for development (0.70.1 in the example above). Extract the files into a **new** directory (e.g. `nw-react/dist/`). Note that the NW.js zip/tgz contains a directory similar to `nwjs-v0.70.1-win-x64`. It's the content of that directory, which need to be extracted to `nw-react/dist/` (resulting in `/nw-react/dist/nw.exe`).
+3. Rename the NW.js executable file to match your application name (Windows: `nw.exe` to `nw-react.exe` | Linux: `nw` to `nw-react`). This can be **any** name.
 4. Create a directory named `package.nw` inside the directory created in step #2 above (e.g. `nw-react/dist/package.nw/`).
 5. Copy the following files to this new `package.nw` directory: `nw-react/main.js`, `nw-react/package.json`, `nw-react/build/` (the entire directory).
-6. Edit the new copy of `package.json` (in the dist directory) and remove all of the following properties/sections: `private`, `devDependencies`, `scripts`, `eslintConfig`, and `browserslist`.
-7. If the Node.js context of your application uses any NPM packages (anything in `dependencies`), these need to be installed in the `package.nw` directory. To do this, run `npm install` inside `package.nw`.
+6. Edit the new copy of `package.json` (in the `nw-react/dist/` directory) and remove all of the following properties/sections: `private`, `devDependencies`, `scripts`, `eslintConfig`, and `browserslist`.
+7. If the Node.js context of your application uses any NPM packages (anything in `dependencies`), these need to be installed into the `package.nw` directory. To do this, run `npm install --no-save` inside `nw-react/dist/package.nw/`.
 
-The main directory from step #2 will now include your fully-functional application. It can be copied anywhere and used without needing anything else pre-installed. Ideally, this directory would now be turned into an "installer" for easy distribution. This can be done with tools like <a href="https://jrsoftware.org/isinfo.php">InnoSetup</a> for Windows or building a DEB/RPM for Linux.
+The main directory from step #2 will now include your fully-functional application. It can be zipped and/or copied anywhere and used without needing anything else pre-installed. Ideally, this directory would now be turned into an "installer" for easy distribution. This can be done with tools like <a href="https://jrsoftware.org/isinfo.php">InnoSetup</a> for Windows or building a DEB/RPM for Linux.
 
 ## Build Tools
 Often, it's fairly-trivial at this point to write a custom "build system" that automatically runs through the above steps (as well as any additional customization steps needed), and generates installers for all supported operating systems. There are some existing packages for this task, but most have not been maintained:
