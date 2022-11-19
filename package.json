@@ -1,5 +1,5 @@
 {
-  "name": "nw-react",
+  "name": "nw-react-example",
   "version": "0.1.1",
   "main": "main.js",
   "homepage": ".",
@@ -11,15 +11,17 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "concurrently": "^7.2.2",
+    "@testing-library/user-event": "^14.4.3",
+    "concurrently": "^7.5.0",
+    "cross-env": "^7.0.3",
     "nw": "0.70.1-sdk",
+    "nw-builder": "^4.0.0",
     "react": "^18.2.0",
-    "react-devtools": "^4.24.7",
+    "react-devtools": "^4.26.1",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "wait-on": "^6.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^3.1.0"
   },
   "scripts": {
     "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
@@ -29,7 +31,20 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",
+    "dist": "node dist.mjs"
+  },
+  "build": {
+    "manifestProps": [
+      "name",
+      "version",
+      "main",
+      "node-remote"
+    ],
+    "osTypes": [
+      "windows"
+    ]
   },
   "eslintConfig": {
     "globals": {
