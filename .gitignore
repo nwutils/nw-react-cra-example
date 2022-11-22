@@ -12,6 +12,7 @@
 /build
 /dist
 /cache
+nwbuild.log
 
 # misc
 .DS_Store

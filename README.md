@@ -207,9 +207,8 @@ Notes:
 - The `version` property from `package.json` will be used in the generated directories and ZIP files.
 - To use Node.js or NW.js APIs inside the React application, the `node-remote` property must be included in the production `package.json`.
 - The generated ZIP/directory can be used to create an installation package (see below for suggestions).
-- The `nw-builder` package is undergoing a significant updates with v4 and functionality may change or break behavior of this build process. Current issues:
-  - The cache directory must be created before running the build: https://github.com/nwutils/nw-builder/issues/691
-  - The `compress.js` contains a bug which prevents multiple builds from completing: https://github.com/nwutils/nw-builder/issues/692
+- The `nw-builder` package is undergoing a significant updates with v4 and functionality may change or break behavior of this build process. Current issues (as of 4.0.1):
+  - Linux builds will fail: https://github.com/nwutils/nw-builder/issues/699
   - The `nw.exe` file included in the production file is not renamed: https://github.com/nwutils/nw-builder/issues/695
 - No testing has been done on Linux or macOS. Please report any observed issues.
 
