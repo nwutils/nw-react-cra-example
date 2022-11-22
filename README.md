@@ -35,7 +35,7 @@ The following steps will result in a development environment, where your React a
         "main": "main.js",
         "homepage": ".",
         "node-remote": [
-          "http://localhost:3042",
+          "http://127.0.0.1:3042",
           "file://*"
         ],
         "build": {
@@ -57,8 +57,8 @@ The following steps will result in a development environment, where your React a
         "scripts": {
             "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
             "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
-            "dev:linux": "concurrently \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-            "dev-tools:linux": "concurrently \"react-devtools\" \"npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr .\"",
+            "dev:linux": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
+            "dev-tools:linux": "concurrently \"react-devtools\" \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr .\"",
             "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",
             "dist": "node dist.mjs"
         }
@@ -161,7 +161,7 @@ The following steps will result in a development environment, where your React a
 
 6. Add the following at the top of the `<head>` block in `nw-react-example\public\index.html`:
     ```html
-    <script>if ('%REACT_APP_DEVTOOLS%'.trim() === 'enabled') document.write('<script src="http:\/\/localhost:8097"><\/script>')</script>
+    <script>if ('%REACT_APP_DEVTOOLS%'.trim() === 'enabled') document.write('<script src="http:\/\/127.0.0.1:8097"><\/script>')</script>
     ```
 
 ## Development Notes
@@ -209,6 +209,7 @@ Notes:
 - The generated ZIP/directory can be used to create an installation package (see below for suggestions).
 - The `nw-builder` package is undergoing a significant updates with v4 and functionality may change or break behavior of this build process. Current issues (as of 4.0.1):
   - Linux builds will fail: https://github.com/nwutils/nw-builder/issues/699
+  - MacOS (osx) builds will fail: https://github.com/nwutils/nw-builder/issues/705
   - The `nw.exe` file included in the production file is not renamed: https://github.com/nwutils/nw-builder/issues/695
 - No testing has been done on Linux or macOS. Please report any observed issues.
 
