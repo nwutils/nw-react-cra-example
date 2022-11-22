@@ -55,10 +55,8 @@ The following steps will result in a development environment, where your React a
             }
         },
         "scripts": {
-            "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
-            "dev-tools": "concurrently \"react-devtools\" \"set REACT_APP_DEVTOOLS=enabled && npm start\" \"wait-on http://127.0.0.1:3042 && set NWJS_START_URL=http://127.0.0.1:3042 && nw --enable-logging=stderr .\"",
-            "dev:linux": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr --remote-debugging-port=3043 .\"",
-            "dev-tools:linux": "concurrently \"react-devtools\" \"export REACT_APP_DEVTOOLS=enabled; npm start\" \"wait-on http://127.0.0.1:3042 && export NWJS_START_URL=http://127.0.0.1:3042; nw --enable-logging=stderr .\"",
+            "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
+            "dev-tools": "concurrently \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
             "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",
             "dist": "node dist.mjs"
         }
@@ -165,13 +163,18 @@ The following steps will result in a development environment, where your React a
     ```
 
 ## Development Notes
-- At this point, you can run `npm run dev` (Windows) or `npm run dev:linux` (Linux). The React development "live" server will be started and NW.js will be launched, connecting to that "live" server. Any updates to your React application will automatically be reflected in the NW.js window.
+- At this point, you can run `npm run dev`. The React development "live" server will be started and NW.js will be launched, connecting to that "live" server. Any updates to your React application will automatically be reflected in the NW.js window.
 
 - To access Chrome developer tools, right-click on the window that opens. Selecting "Inspect" will show DevTools for the current window. Selecting "Inspect background page" shows DevTools for the Node.js process running `main.js`.
 
-- Running `npm run dev:tools` (Windows) or `npm run dev:linuxtools` (Linux) will behave the same as above, but will also start a standalone version of React DevTools which the React application will connect to.
+- Running `npm run dev-tools` will behave the same as above, but will also start a standalone version of React DevTools which the React application will connect to.
 
 - Any NPM packages used with the React portion of your application should be installed as `devDependencies` (`npm install --save-dev <package>`). Any NPM packages use by `main.js` (or any other Node.js-context scripts) that need to be included in the "production" application, should be installed as `dependencies` (`npm install <package>`). This will be further-clarified in the "Production Build" section below.
+
+- Attempting to install the NW.js NPM package on an Apple Silicon system will fail unless you set the architecture:
+    ```sh
+    npm_config_nwjs_process_arch=x64 npm i nw@0.70.1-sdk
+    ```
 
 - **NOTE:** There is currently an issue (https://github.com/nwjs/nw.js/issues/7852) where "zombie" NW.js processes stick around and chew up system memory, when the application is closed by pressing CTRL-C in the terminal where `npm run dev` was executed. A decent workaround for this behavior would be much appreciated!
 
