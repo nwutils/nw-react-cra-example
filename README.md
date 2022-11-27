@@ -28,6 +28,8 @@ The following steps will result in a development environment, where your React a
 
     __Note #2__: The above NPM commands would normally be `--save-dev` to make them `devDependencies`. However, `create-react-app` incorrectly marks all of its dependencies as `dependencies`. So, we'll be renaming the entire section in step #2 below.
 
+    __Note #3__: When using macOS on Apple Silicon, installation of `nw` will fail. As a workaround until an ARM build of NW.js is available, set the NPM environment  variable to force the x64 build to be used (e.g. `npm_config_nwjs_process_arch=x64 npm i`). First launch of the application will be slower as Rosetta 2 translates the binary.
+
 2. Open the file `nw-react-example/package.json` and make the following changes:
     - Rename `dependencies` to `devDependencies`.
     - Add the following:
