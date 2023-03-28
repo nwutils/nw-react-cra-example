@@ -1,6 +1,6 @@
 {
   "name": "nw-react-example",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "main": "main.js",
   "homepage": ".",
   "node-remote": [
@@ -14,8 +14,8 @@
     "@testing-library/user-event": "^14.4.3",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
-    "nw": "0.70.1-sdk",
-    "nw-builder": "^4.0.1",
+    "nw": "0.72.0-sdk",
+    "nw-builder": "^4.2.1",
     "react": "^18.2.0",
     "react-devtools": "^4.26.1",
     "react-dom": "^18.2.0",

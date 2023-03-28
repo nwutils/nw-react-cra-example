@@ -9,4 +9,4 @@ const interfaceUri = process.env.NWJS_START_URL
 
 const startUri = `${interfaceUri}/index.html`;
 
-nw.Window.open(startUri);
+nw.Window.open(startUri, { icon: './build/logo512.png' });

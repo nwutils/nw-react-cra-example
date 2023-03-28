@@ -1,6 +1,6 @@
 import { copyFile, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
-import { nwbuild } from 'nw-builder';
+import nwbuild from 'nw-builder';
 
 const packageManifest = JSON.parse(await readFile('./package.json'));
 const appBaseDir = path.resolve('./dist/app/');
@@ -51,6 +51,7 @@ for (const osType of appOsTypes) {
   const nwVersion = packageManifest.devDependencies.nw.split('-')[0] || defaultBuildCfg.nwVersion;
   const outDir = path.resolve(`./dist/${appName}-${appVersion}-${osType}/`);
   const nwBuildArgs = {
+    glob: false,
     srcDir: appBaseDir,
     version: nwVersion,
     flavour: 'normal',
