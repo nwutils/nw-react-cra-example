@@ -157,7 +157,7 @@ The following steps will result in a development environment, where your React a
     }
     console.log(`Finished building package for ${osType}`);
     }
-```
+    ```
 
 6. Add the following at the top of the `<head>` block in `nw-react-example\public\index.html`:
     ```html
