@@ -237,3 +237,8 @@ Often, it's fairly-trivial at this point to write a custom "build system" that a
 - <a href="https://www.npmjs.com/package/nw-builder">nw-builder</a> - Currently, the only actively-maintained NW.js build tool.
 - <a href="https://www.npmjs.com/package/nwjs-builder-phoenix">nwjs-builder-phoenix</a> - This was an excellent set of build scripts, but it has not been maintained. It's still a good reference, if building a custom build system.
 - <a href="https://gitlab.com/TheJaredWilcurt/battery-app-workshop#packaging-your-app-for-distribution">battery-app-workshop</a> - While some of the details are outdated, this is another excellent resource for manual builds.
+
+
+## Alternatives
+
+* [create-nw-react-app](https://github.com/naviapps/create-nw-react-app) - A highly opinionated NW.js/React boilerplate based around Create React App (CRA) and Webpack. Has lots of choices and additional tooling already made for you, set up and installed.
