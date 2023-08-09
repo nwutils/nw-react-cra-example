@@ -54,9 +54,9 @@ for (const osType of appOsTypes) {
     glob: false,
     srcDir: appBaseDir,
     version: nwVersion,
-    flavour: 'normal',
+    flavor: 'normal',
     platform: platform,
-    arch: 'x64',
+    arch: process.arch,
     outDir,
     run: false,
     zip: true

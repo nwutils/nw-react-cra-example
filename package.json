@@ -15,7 +15,7 @@
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
     "nw": "0.72.0-sdk",
-    "nw-builder": "^4.2.1",
+    "nw-builder": "^4.3.5",
     "react": "^18.2.0",
     "react-devtools": "^4.26.1",
     "react-dom": "^18.2.0",
