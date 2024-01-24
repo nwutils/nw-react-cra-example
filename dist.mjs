@@ -48,7 +48,7 @@ const appVersion = packageManifest.version || '1.0.0';
 for (const osType of appOsTypes) {
   console.log(`Building package for ${osType}...`);
   const platform = osType === 'windows' ? 'win' : osType;
-  const nwVersion = packageManifest.devDependencies.nw.split('-')[0] || defaultBuildCfg.nwVersion;
+  const nwVersion = packageManifest.devDependencies.nw.replace('^', '').split('-')[0] || defaultBuildCfg.nwVersion;
   const outDir = path.resolve(`./dist/${appName}-${appVersion}-${osType}/`);
   const nwBuildArgs = {
     glob: false,

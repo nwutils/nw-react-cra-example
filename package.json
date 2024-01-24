@@ -3,6 +3,9 @@
   "version": "0.1.2",
   "main": "main.js",
   "homepage": ".",
+  "window": {
+    "icon": "./build/logo512.png"
+  },
   "node-remote": [
     "http://127.0.0.1:3042",
     "file://*"
@@ -14,8 +17,8 @@
     "@testing-library/user-event": "^14.4.3",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
-    "nw": "0.72.0-sdk",
-    "nw-builder": "^4.3.5",
+    "nw": "0.83.0-sdk",
+    "nw-builder": "^4.5.4",
     "react": "^18.2.0",
     "react-devtools": "^4.26.1",
     "react-dom": "^18.2.0",
@@ -24,7 +27,7 @@
     "web-vitals": "^3.1.0"
   },
   "scripts": {
-    "dev": "concurrently \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
+    "dev": "concurrently -k \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "dev-tools": "concurrently \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -38,7 +41,8 @@
       "name",
       "version",
       "main",
-      "node-remote"
+      "node-remote",
+      "window"
     ],
     "osTypes": [
       "windows"
