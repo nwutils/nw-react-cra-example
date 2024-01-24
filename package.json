@@ -28,7 +28,7 @@
   },
   "scripts": {
     "dev": "concurrently -k \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
-    "dev-tools": "concurrently \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
+    "dev-tools": "concurrently -k \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
