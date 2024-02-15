@@ -1,16 +1,13 @@
 {
   "name": "nw-react-example",
   "version": "0.1.3",
-  "main": "main.js",
-  "type": "module",
-  "homepage": ".",
+  "main": "http://localhost:5173/",
+  "node-remote": "http://localhost:5173/",
   "window": {
     "icon": "./build/logo512.png"
   },
-  "node-remote": [
-    "http://127.0.0.1:3042",
-    "file://*"
-  ],
+  "type": "module",
+  "homepage": ".",
   "private": true,
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -39,12 +36,16 @@
     "postinstall": "base-volta-off-of-nwjs",
     "lint": "eslint ./src/**/*.jsx",
     "test": "vitest",
-    "dev": "concurrently -k \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
+    "dev": "concurrently -k npm:dev:react npm:dev:nwjs:wait",
     "dev-tools": "concurrently -k \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
-    "dev:react": "concurrently npm:dev:react:vite npm:dev:react:tools",
+    "dev:react": "concurrently -k npm:dev:react:vite npm:dev:react:tools",
     "dev:react:vite": "vite",
     "dev:react:tools": "react-devtools",
+    "dev:nwjs": "nw --enable-logging=stderr .",
+    "dev:nwjs:wait": "wait-on -c waitOn.config.json http://localhost:5173 && nw --enable-logging=stderr .",
+    "build": "npm run build:react && npm run build:nwjs",
     "build:react": "vite build",
+    "build:nwjs": "node pre.nw.js && nwbuild --flavor=sdk --cacheDir=./node_modules/nw --outDir=./out/nwjs --glob=false ./out/react",
     "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",
     "dist": "node dist.mjs"
   },
