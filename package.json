@@ -24,6 +24,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "jsdom": "^24.0.0",
     "nw": "^0.84.0",
     "nw-builder": "^4.5.4",
     "react": "^18.2.0",
@@ -31,6 +32,7 @@
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
     "vite": "^5.1.2",
+    "vitest": "^1.2.2",
     "wait-on": "^6.0.1",
     "web-vitals": "^3.1.0"
   },
@@ -42,11 +44,11 @@
     "dev:react:vite": "vite",
     "dev:react:tools": "react-devtools",
     "build:react": "vite build",
-    "test": "react-scripts test",
+    "test": "vitest",
     "eject": "react-scripts eject",
     "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",
     "dist": "node dist.mjs",
-    "lint": "eslint ./src/**/*"
+    "lint": "eslint ./src/**/*.jsx"
   },
   "build": {
     "manifestProps": [
