@@ -30,7 +30,6 @@
     "react": "^18.2.0",
     "react-devtools": "^4.26.1",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1",
     "vite": "^5.1.2",
     "vitest": "^1.2.2",
     "wait-on": "^6.0.1",
@@ -38,17 +37,16 @@
   },
   "scripts": {
     "postinstall": "base-volta-off-of-nwjs",
+    "lint": "eslint ./src/**/*.jsx",
+    "test": "vitest",
     "dev": "concurrently -k \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "dev-tools": "concurrently -k \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "dev:react": "concurrently npm:dev:react:vite npm:dev:react:tools",
     "dev:react:vite": "vite",
     "dev:react:tools": "react-devtools",
     "build:react": "vite build",
-    "test": "vitest",
-    "eject": "react-scripts eject",
     "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",
-    "dist": "node dist.mjs",
-    "lint": "eslint ./src/**/*.jsx"
+    "dist": "node dist.mjs"
   },
   "build": {
     "manifestProps": [
