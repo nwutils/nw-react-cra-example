@@ -41,7 +41,7 @@
     "dev:react": "concurrently npm:dev:react:vite npm:dev:react:tools",
     "dev:react:vite": "vite",
     "dev:react:tools": "react-devtools",
-    "build": "react-scripts build",
+    "build:react": "vite build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predist": "cross-env GENERATE_SOURCEMAP=false BUILD_PATH=./dist/app/build/ npm run build",

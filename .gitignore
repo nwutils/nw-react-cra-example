@@ -12,6 +12,7 @@
 /build
 /dist
 /cache
+/out
 nwbuild.log
 
 # misc
