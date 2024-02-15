@@ -15,7 +15,7 @@ const defaultBuildCfg = {
     'windows',
     'linux',
   ],
-  nwVersion: '0.70.1',
+  nwVersion: '0.84.0',
 };
 
 // Copy main.js to dist/app/ directory for packaging

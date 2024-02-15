@@ -15,6 +15,7 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
+    "base-volta-off-of-nwjs": "^1.0.3",
     "concurrently": "^7.5.0",
     "cross-env": "^7.0.3",
     "nw": "^0.84.0",
@@ -23,10 +24,12 @@
     "react-devtools": "^4.26.1",
     "react-dom": "^18.2.0",
     "react-scripts": "^5.0.1",
+    "vite": "^5.1.2",
     "wait-on": "^6.0.1",
     "web-vitals": "^3.1.0"
   },
   "scripts": {
+    "postinstall": "base-volta-off-of-nwjs",
     "dev": "concurrently -k \"npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "dev-tools": "concurrently -k \"react-devtools\" \"cross-env REACT_APP_DEVTOOLS=enabled npm start\" \"wait-on http://127.0.0.1:3042 && cross-env NWJS_START_URL=http://127.0.0.1:3042 nw --enable-logging=stderr .\"",
     "start": "react-scripts start",
@@ -68,5 +71,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "volta": {
+    "node": "21.1.0"
   }
 }
