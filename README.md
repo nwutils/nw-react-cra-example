@@ -1,4 +1,6 @@
-# Build A Desktop Application Using NW.js and React
+# NW.js React Example
+
+![A Screenshot of the default app running on Linux](screenshot.png)
 
 ## Summary
 This is a basic guide for building a desktop application using <a href="https://nwjs.io/">NW.js</a> and <a href="https://reactjs.org/">React</a>.
