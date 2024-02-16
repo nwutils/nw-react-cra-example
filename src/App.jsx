@@ -1,23 +1,40 @@
-import logo from './logo.svg';
 import './App.css';
 
+import ReactIcon from "./react.png";
+import NwIcon from "./nwjs.png";
+
+function useNW() {
+  if (typeof window.nw !== "undefined") {
+    return window.nw;
+  } else {
+    return undefined;
+  }
+}
+
 function App() {
+
+  const nw = useNW();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='app'>
+
+      <div className='icons'>
+        <img height={150} src={ReactIcon} />
+        <img height={150} src={NwIcon} />
+      </div>
+
+      <br />
+
+      <span className='title'>
+        NW.js React Example
+      </span>
+
+      <br />
+
+      <span className='content'>
+        You are running NW.js ({nw?.process?.versions['nw']}), Node ({nw?.process?.versions['node']}), Chromium ({nw?.process?.versions['chromium']}) and React 18
+      </span>
+
     </div>
   );
 }

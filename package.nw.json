@@ -1,5 +1,5 @@
 {
     "name": "nw-react-example",
     "version": "0.0.0",
-    "main": "index.html"
+    "main": "./out/react/index.html"
 }
