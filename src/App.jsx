@@ -25,7 +25,7 @@ function App() {
 
       <br />
 
-      <span className='title'>
+      <span id='app-title' className='title'>
         NW.js React Example
       </span>
 
